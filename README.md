@@ -1,5 +1,6 @@
 # yapi-plugin-gitlab
 当前基于https://github.com/cyj0122/yapi-plugin-gitlab v1.0.1改造。
+ps：暂不合并
 
 ## 安装方式
 ```
