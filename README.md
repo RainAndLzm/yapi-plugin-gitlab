@@ -1,12 +1,6 @@
 # yapi-plugin-gitlab
 当前基于https://github.com/cyj0122/yapi-plugin-gitlab v1.0.1改造。
 
-## 安装方式
-```
-npm install yapi-cli -g
-
-yapi plugin --name yapi-plugin-gitlab
-```
 
 ## 版本
 #### 1.0.2 (2021-02-20)
