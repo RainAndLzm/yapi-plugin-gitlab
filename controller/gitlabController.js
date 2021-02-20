@@ -378,10 +378,14 @@ class gitlabController extends baseController{
      * @returns {Promise<*>}
      */
     async updateMemberAll(id, members, ops, tag) {
+        const {emailPostfix, emailKey, userKey, host, loginPath, redirectUri} = ops;
         let owners = [];
         for (let i = 0; i < members.length; i++) {
             let gitlabUser = await this.searchGitLabUserById(ops, members[i].id);
-            let user = await this.handleThirdLogin(gitlabUser[ops.emailKey], gitlabUser[ops.userKey])
+            const username = gitlabUser[userKey];
+            // 部分gitlab版本此处无法获取email，故使用username作为邮箱前缀
+            const email = gitlabUser[emailKey] ? gitlabUser[emailKey] : (username + emailPostfix);
+            let user = await this.handleThirdLogin(email, username)
             owners.push({
                 _role: user.role,
                 role: members[i].access_level > 30? 'owner' : members[i].access_level > 20? 'dev' : 'guest',
